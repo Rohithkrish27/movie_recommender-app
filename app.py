@@ -26,7 +26,7 @@ def poster(movie_id):
 def recommend(movie):
     movie_index=movies[movies['title'] == movie].index[0]
     distances=similarity[movie_index]
-    movies_list=sorted(list(enumerate(distances)),reverse=True,key=lambda x:x[1])[1:11]
+    movies_list=sorted(list(enumerate(distances)),reverse=True,key=lambda x:x[1])[1:6]
     recommended_movies = []
     recommended_movies_poster = []
     for i in movies_list:
@@ -43,16 +43,11 @@ selected_movie_name = st.selectbox('Choose a movie:',movies['title'].values)
 if st.button('Recommend'):
     names, posters = recommend(selected_movie_name)
     url = 'https://www.google.com/search?q=avatar'
-    col1, col2, col3, col4, col5, col6, col7, col8, col9, col10 = st.columns(10)
+    col1, col2, col3, col4, col5 = st.columns(10)
     render_movie_column(col1, names[0], posters[0], names[0] + " movie")
     render_movie_column(col2, names[1], posters[1], names[1] + " movie")
     render_movie_column(col3, names[2], posters[2], names[2] + " movie")
     render_movie_column(col4, names[3], posters[3], names[3] + " movie")
     render_movie_column(col5, names[4], posters[4], names[4] + " movie")
-    render_movie_column(col5, names[5], posters[5], names[5] + " movie")
-    render_movie_column(col5, names[6], posters[6], names[6] + " movie")
-    render_movie_column(col5, names[7], posters[7], names[7] + " movie")
-    render_movie_column(col5, names[8], posters[8], names[8] + " movie")
-    render_movie_column(col5, names[9], posters[9], names[9] + " movie")
-    render_movie_column(col5, names[10], posters[10], names[10] + " movie")
+
 
